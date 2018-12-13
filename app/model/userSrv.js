@@ -1,5 +1,5 @@
 
-app.factory("user", function($q, $http) {
+app.factory("user", function ($q, $http) {
 
     var activeUser = null;
     // new User( {
@@ -10,31 +10,27 @@ app.factory("user", function($q, $http) {
     //     "pwd": "123"
     // });
 
-    function User(plainUser) {
-        this.id = plainUser.id;
-        this.fname = plainUser.fname;
-        this.lname = plainUser.lname;
-        this.email = plainUser.email;
-        this.pwd = plainUser.pwd;
-    }
+    // function User(plainUser) {
+    //     this.id = plainUser.id;
+    //     this.fname = plainUser.fname;
+    //     this.lname = plainUser.lname;
+    //     this.email = plainUser.email;
+    //     this.pwd = plainUser.pwd;
+    // }
 
     function login(email, pwd) {
         var async = $q.defer();
 
-        var loginURL = "http://my-json-server.typicode.com/nirch/recipe-book-v3/users?email=" +
-            email + "&pwd=" + pwd;
-        $http.get(loginURL).then(function(response) {
-            if (response.data.length > 0) {
-                // success login
-                activeUser = new User(response.data[0]);
-                async.resolve(activeUser);
-            } else {
-                // invalid email or password
-                async.reject("invalid email or password")
-            }
-        }, function(error) {
-            async.reject(error);
-        });
+        // Pass the username and password to logIn function
+        Parse.User.logIn(email, pwd).then(function(user) {
+            // Do stuff after successful login
+            console.log(user);
+            activeUser = user;
+            async.resolve(activeUser);
+        }).catch(function(error) {
+            console.error(error);
+            async.reject("invalid email or password")
+        })
 
         return async.promise;
     }
