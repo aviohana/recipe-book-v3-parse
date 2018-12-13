@@ -14,7 +14,7 @@ app.controller("newRecipeCtrl", function ($scope, recipes, $location, user) {
             
             // EmailJS
             var template_params = {
-                to_email: user.getActiveUser().email,
+                to_email: user.getActiveUser().get("email"),
                 from_name: "Recipe Book LTD",
                 to_name: user.getActiveUser().fname + " " + user.getActiveUser().lname,
                 message_html: "You created a new Recipe: " +  $scope.name
