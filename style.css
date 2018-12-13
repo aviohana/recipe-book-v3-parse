@@ -1,0 +1,15 @@
+/* Hebrew Support
+body {
+    direction: rtl;
+    text-align: right;
+} */
+
+.login {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.recipe > img {
+    object-fit: cover;
+    height: 300px;
+}
