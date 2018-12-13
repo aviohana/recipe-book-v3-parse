@@ -24,6 +24,17 @@
        })();
     </script>
 
+    <!-- Parse Server -->
+    <script src="node_modules/parse/dist/parse.min.js"></script>
+    <script>
+        Parse.serverURL = 'https://parseapi.back4app.com'; // This is your Server URL
+        Parse.initialize(
+          'r6AhsMTPgiClUfivltxIBJprRJ54p09fj13fOyZ8', // This is your Application ID
+          'XtjMfj3dFrAqIprBOmTrqcTxb9l1ePhy1DsP1yl9' // This is your Javascript key
+        );
+    </script>
+
+
     <link rel="stylesheet" href="style.css">
     <script src="app/app.js"></script>
     <script src="app/navbar/navbarDir.js"></script>
